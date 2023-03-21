@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+        body{
+          background-color: #c7c6c6;
+          color: #041671;
+          font-size: 33px;
+        }
+      .room-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+      }
+      .room {
+        color: #ffffff;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        width: 80vw;
+        padding: 20px;
+        margin: 20px;
+        border: 4px solid #041671;
+        border-radius: 5px;
+        background-color: #f17b1a;
+      }
+      #roomA {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        width: 80vw;
+        padding: 20px;
+        margin: 20px;
+        border: 4px solid #041671;
+        border-radius: 5px;
+        background-color: #b73298;
+      }
+      #roomB {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        width: 80vw;
+        padding: 20px;
+        margin: 20px;
+        border: 4px solid #041671;
+        border-radius: 5px;
+        background-color: #19a15f;
+      }
+      #roomC {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        width: 80vw;
+        padding: 20px;
+        margin: 20px;
+        border: 4px solid #041671;
+        border-radius: 5px;
+        background-color: #c71b43;
+      }
+      .button {
+        background-color: #041671;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 48px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="room-container">
+      
+      <div id="roomD" class="room">
+        <h2>Rom D</h2>
+        <p>Du kan gå til rom A fra her</p>
+        <button class="button" onclick="controller.toRoomA()">Gå til rom A</button>
+      </div>
+
+      <div id="roomA" class="room">
+        <h2>Rom A</h2>
+        <p>Du kan gå til rom B fra her</p>
+        <button class="button" onclick="controller.toRoomB()">Gå til rom B</button>
+      </div>
+
+
+      <div id="roomB" class="room">
+        <h2>Rom B</h2>
+        <p>Du kan gå til rom C fra her</p>
+        <button class="button" onclick="controller.toRoomC()">Gå til rom C</button>
+      </div>
+
+    
+      <div id="roomC" class="room">
+        <h2>Rom C</h2>
+        <p>Du har nå besøkt alle rommene</p>
+      </div>
+    </div>
+
+    <script>
+    // model 
+        let model = {
+        currentRoom: "roomD",
+        rooms: ["roomD", "roomA", "roomB", "roomC"],
+        };
+
+    // view 
+        let view = {
+        showRoom: function (room) {
+            model.rooms.forEach(function (x) {
+            let div = document.getElementById(x);
+            if (x === room) {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+            });
+            model.currentRoom = room;
+        },
+        };
+
+    // controller
+        let controller = {
+    
+        view: function () {
+            view.showRoom(model.currentRoom);
+        },
+
+        toRoomA: function () {
+            view.showRoom("roomA");
+        },
+
+        toRoomB: function () {
+            view.showRoom("roomB");
+        },
+
+        toRoomC: function () {
+            view.showRoom("roomC");
+        },
+        };
+
+        controller.view();
+
+
+    </script>
+  </body>
+</html>
